@@ -1,3 +1,13 @@
+<?php 
+require_once __DIR__ . '/config.php';
+
+
+use Models\Car;
+
+$cars = Car::all();
+
+?>
+
 <!doctype html>
 <html lang="en">
   <?php include 'layouts/head.php'; ?>
@@ -29,18 +39,22 @@
             </tr>
           </thead>
           <tbody>
-            <!-- Sample rows -->
-            <tr>
-                <td>1</td>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011-04-25</td>
-            </tr>
-          
-          
-            <!-- add more rows as needed -->
+            <?php foreach ($cars as $c): ?>
+                <tr>
+                <td><?=htmlspecialchars($c['id'])?></td>
+                <td><?=htmlspecialchars($c['model'])?></td>
+                <td><?=htmlspecialchars($c['category'])?></td>
+                <td><?=htmlspecialchars($c['daily_price'])?></td>
+                <td><?=htmlspecialchars($c['status'])?></td>
+                <td>
+                    <?php if ($c['status'] === 'Available'): ?>
+                    <a class="btn" href="http://localhost/Esoft/induvidual/EcoRideCar/public/index.php?page=book&category=<?=urlencode($c['category'])?>">Book</a>
+                    <?php else: ?>
+                    &mdash;
+                    <?php endif; ?>
+                </td>
+                </tr>
+            <?php endforeach; ?>
           </tbody>
           <tfoot>
             <tr>
