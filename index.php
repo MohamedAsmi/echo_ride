@@ -63,7 +63,7 @@ $cars = Car::all();
                 <td><?=htmlspecialchars($c['status'])?></td>
                 <td>
                     <?php if ($c['status'] === 'Available'): ?>
-                    <a class="btn" href="http://localhost/Esoft/induvidual/EcoRideCar/public/index.php?page=book&category=<?=urlencode($c['category'])?>">Book</a>
+                    <a class="btn" href="http://localhost/Esoft/induvidual/echo_ride/book.php?page=book&category=<?=urlencode($c['category'])?>">Book</a>
                     <?php else: ?>
                     &mdash;
                     <?php endif; ?>
