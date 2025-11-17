@@ -5,6 +5,8 @@
    <?php include 'layouts/style.css'; ?>
   </style>
 <body>
+   <?php include 'layouts/nav.php'; ?>
+
   <div class="container">
     <h1 class="mb-3">EcoRide Car Rental System</h1>
 
