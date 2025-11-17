@@ -1,7 +1,10 @@
 <?php 
 use Models\Category;
-
+use Models\Model;
 $category = Category::all();
+
+
+$model = Model::all();
 
 ?>
 
@@ -16,7 +19,11 @@ $category = Category::all();
           <div class="modal-body">
                 <div class="mb-3">
                   <label for="model" class="form-label">Model</label>
-                  <input type="text" class="form-control" id="model" placeholder="Enter Model" name="model" required>
+                  <select name="model" id="model" class="form-select" required>
+                    <?php foreach ($model as $m): ?>
+                      <option value="<?=htmlspecialchars($m['name'])?>"><?=htmlspecialchars($m['name'])?></option>
+                    <?php endforeach; ?>
+                  </select>
                 </div>
                 <div class="mb-3">
                   <label for="category" class="form-label">Category</label>
@@ -27,12 +34,28 @@ $category = Category::all();
                     </select>
                 </div>
                 <div class="mb-3">
-                  <label for="daily_price" class="form-label">Daily</label>
+                  <label for="daily_price" class="form-label">Daily Price</label>
                   <input type="text" class="form-control" id="daily_price" placeholder="Enter Daily Price" name="daily_price" required>
                 </div>
                 <div class="mb-3">
+                  <label for="free_km" class="form-label">Enter Free Km</label>
+                  <input type="text" class="form-control" id="free_km" placeholder="Enter Free Km" name="free_km" required>  
+                </div>
+                 <div class="mb-3">
+                  <label for="extra_km_charge" class="form-label">Enter Extra Km Charge</label>
+                  <input type="text" class="form-control" id="extra_km_charge" placeholder="Enter Extra Km Charge" name="extra_km_charge" required>  
+                </div>
+                <div class="mb-3">
+                  <label for="tax_rate" class="form-label">Enter Tax Rate</label>
+                  <input type="text" class="form-control" id="tax_rate" placeholder="Enter Tax Rate" name="tax_rate" required>  
+                </div>
+                <div class="mb-3">
                   <label for="status" class="form-label">Status</label>
-                  <input type="text" class="form-control" id="status" placeholder="Enter Status" name="status" required>
+                  <select name="status" id="status" class="form-select" required>
+                    <option value="available">Available</option>
+                    <option value="Maintanance">Maintanance</option>
+                    <option value="reserved">Reserved</option>
+                  </select>
                 </div>
           </div>
           <div class="modal-footer">

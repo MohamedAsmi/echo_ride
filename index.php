@@ -14,6 +14,7 @@ $cars = Car::all();
   <?php include 'layouts/modals/add_car.php'; ?>
   <?php include 'layouts/modals/add_category.php'; ?>
   <?php include 'layouts/modals/add_model.php'; ?>
+  <?php include 'layouts/modals/add_customer.php'; ?>
   <style>
    <?php include 'layouts/style.css'; ?>
   </style>
@@ -29,15 +30,14 @@ $cars = Car::all();
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addcarmodal">
                 Add New Car
             </button>
-        </div>
-         <div class="text-end col-md-12 mt-3 me-3 p-4">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addcategorymodal">
                 Add Category
             </button>
-        </div>
-        <div class="text-end col-md-12 mt-3 me-3 p-4">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addmodelmodal">
                 Add Model
+            </button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addcustomermodal">
+                Add Customer
             </button>
         </div>
     </div>
