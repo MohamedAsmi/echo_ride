@@ -6,4 +6,5 @@
   <link href="https://cdn.jsdelivr.net/npm/datatables.net-dt@1.13.6/css/jquery.dataTables.min.css" rel="stylesheet"/>
   <link href="https://cdn.jsdelivr.net/npm/datatables.net-responsive-dt@2.5.0/css/responsive.dataTables.min.css" rel="stylesheet"/>
   <link href="https://cdn.jsdelivr.net/npm/datatables.net-buttons-dt@2.4.1/css/buttons.dataTables.min.css" rel="stylesheet"/>
+<base href="http://localhost/Esoft/induvidual/echo_ride/">
   </head>

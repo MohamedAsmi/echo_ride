@@ -10,3 +10,7 @@
   <script src="https://cdn.jsdelivr.net/npm/datatables.net-buttons@2.4.1/js/buttons.print.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/datatables.net-buttons@2.4.1/js/buttons.colVis.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/datatables.net-buttons-dt@2.4.1/js/buttons.dataTables.min.js"></script>
+<script>
+    const BASE_URL = document.querySelector('base').href;
+</script>
+  
