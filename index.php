@@ -11,6 +11,8 @@ $cars = Car::all();
 <!doctype html>
 <html lang="en">
   <?php include 'layouts/head.php'; ?>
+  <?php include 'layouts/modals/add_car.php'; ?>
+  <?php include 'layouts/modals/add_category.php'; ?>
   <style>
    <?php include 'layouts/style.css'; ?>
   </style>
@@ -23,7 +25,14 @@ $cars = Car::all();
     <div class="card">
     <div class="row">
         <div class="text-end col-md-12 mt-3 me-3 p-4">
-            <button class="btn btn-primary">Add new Car</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addcarmodal">
+                Add New Car
+            </button>
+        </div>
+         <div class="text-end col-md-12 mt-3 me-3 p-4">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addcategorymodal">
+                Add Category
+            </button>
         </div>
     </div>
       <div class="card-body">
