@@ -6,12 +6,10 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent class-end">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Register</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#">Reservation</a>
-        </li>
+   
+    <li class="nav-item">
+        <a class="nav-link <?= ($currentPage == 'Reservation.php') ? 'active' : '' ?>" href="Reservation.php">Reservation</a>
+    </li>
       </ul>
     </div>
   </div>

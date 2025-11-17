@@ -4,5 +4,9 @@
         responsive: true,
        
       });
+       $('#invoice').DataTable({
+        responsive: true,
+       
+      });
     });
   </script>

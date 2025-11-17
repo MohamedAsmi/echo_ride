@@ -71,4 +71,11 @@ class Reservation
         $escaped = $db->escape($date);
         return $db->fetchAll("SELECT * FROM reservations WHERE start_date = '" . $escaped . "'");
     }
+
+    public static function getDataWithCustomerAndCar()
+    {
+        $db = get_db();
+        $rows = $db->fetchAll("SELECT r.*, c.name AS customer_name, ca.model AS car_model FROM reservations r LEFT JOIN customers c ON r.customer_id = c.id LEFT JOIN cars ca ON r.car_id = ca.id ORDER BY r.id DESC");
+        return $rows;
+    }
 }
