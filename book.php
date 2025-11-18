@@ -2,9 +2,9 @@
 require_once __DIR__ . '/config.php';
 
 
-use Models\Customer;
+use Models\K2534814_Customer;
 
-$customers = Customer::all();
+$customers = K2534814_Customer::all();
 
 ?>
 

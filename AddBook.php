@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/config.php';
 
-use Models\Reservation;
+use Models\K2534814_Reservation;
 
 header('Content-Type: application/json');
 
@@ -15,7 +15,7 @@ $data = [
         'total_km' => $_POST['total_km'] ?? 0
     ];
     try {
-        $rid = Reservation::create($data);
+        $rid = K2534814_Reservation::create($data);
          echo json_encode([
             'status' => 'success',
             'message' => "Category created successfully (ID: $rid)",

@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/config.php';
 
-use Models\Model;
+use Models\K2534814_Model;
 
 header('Content-Type: application/json');
 
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     try {
-        $id = Model::create(['name' => $name]);
+        $id = K2534814_Model::create(['name' => $name]);
         echo json_encode([
             'status' => 'success',
             'message' => "Model created successfully (ID: $id)",

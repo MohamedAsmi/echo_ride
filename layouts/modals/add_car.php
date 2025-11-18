@@ -1,11 +1,10 @@
 <?php 
-use Models\Category;
-use Models\Model;
-$category = Category::all();
+use Models\K2534814_Category;
+use Models\K2534814_Model;
+$category = K2534814_Category::all();
 
 
-$model = Model::all();
-
+$model = K2534814_Model::all();
 ?>
 
 <div class="modal fade" id="addcarmodal" tabindex="-1" aria-labelledby="addcarLabel" aria-hidden="true">

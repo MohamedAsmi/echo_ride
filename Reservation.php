@@ -2,9 +2,9 @@
 require_once __DIR__ . '/config.php';
 
 
-use Models\Reservation;
+use Models\K2534814_Reservation;
 
-$reservations = Reservation::getDataWithCustomerAndCar();
+$reservations = K2534814_Reservation::getDataWithCustomerAndCar();
 
 ?>
 

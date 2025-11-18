@@ -2,9 +2,9 @@
 require_once __DIR__ . '/config.php';
 
 
-use Models\Car;
+use Models\K2534814_Car;
 
-$cars = Car::all();
+$cars = K2534814_Car::all();
 
 ?>
 

@@ -1,7 +1,7 @@
 <?php
 namespace Models;
 
-class Customer
+class K2534814_Customer
 {
     public $id;
     public $nic_passport;
@@ -13,13 +13,13 @@ class Customer
     public static function all()
     {
         $db = get_db();
-        return $db->fetchAll("SELECT * FROM customers ORDER BY id");
+        return $db->fetchAll("SELECT * FROM K2534814_customers ORDER BY id");
     }
 
     public static function create($data)
     {
         $db = get_db();
-        $stmt = $db->prepare("INSERT INTO customers (nic_passport, name, phone, email, created_at) VALUES (?, ?, ?, ?, ?)");
+        $stmt = $db->prepare("INSERT INTO K2534814_customers (nic_passport, name, phone, email, created_at) VALUES (?, ?, ?, ?, ?)");
         $nic = $data['nic_passport'];
         $name = $data['name'];
         $phone = $data['phone'];
@@ -35,13 +35,13 @@ class Customer
     public static function findById($id)
     {
         $db = get_db();
-        return $db->fetchOne("SELECT * FROM customers WHERE id = " . (int)$id);
+        return $db->fetchOne("SELECT * FROM K2534814_customers WHERE id = " . (int)$id);
     }
 
     public static function findByNameOrId($term)
     {
         $db = get_db();
         $escaped = $db->escape($term);
-        return $db->fetchAll("SELECT * FROM customers WHERE name LIKE '%" . $escaped . "%' OR id = '" . $escaped . "'");
+        return $db->fetchAll("SELECT * FROM K2534814_customers WHERE name LIKE '%" . $escaped . "%' OR id = '" . $escaped . "'");
     }
 }

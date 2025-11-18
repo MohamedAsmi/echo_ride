@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/config.php';
 
-use Models\Customer;
+use Models\K2534814_Customer;
 
 header('Content-Type: application/json');
 
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     try {
-        $id = Customer::create([
+        $id = K2534814_Customer::create([
             'nic_passport' => $nic_passport,
             'name' => $name,
             'phone' => $phone,

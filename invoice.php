@@ -1,13 +1,13 @@
 <?php 
 require_once __DIR__ . '/config.php';
-use Models\Invoice;
+use Models\K2534814_Invoice;
 
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
 $message = '';
 try {
     if ($id) {
-        $info = Invoice::generateFromReservation($id);
+        $info = K2534814_Invoice::generateFromReservation($id);
     }
 } catch (\Throwable $e) {
     $message = 'Error: ' . $e->getMessage();

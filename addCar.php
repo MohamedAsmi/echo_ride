@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/config.php';
 
-use Models\Car;
+use Models\K2534814_Car;
 
 header('Content-Type: application/json');
 
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
 
     try {
-        $id = Car::create([
+        $id = K2534814_Car::create([
             'model' => $model,
             'category' => $category,    
             'daily_price' => $daily_price,

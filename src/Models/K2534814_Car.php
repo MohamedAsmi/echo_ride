@@ -4,7 +4,7 @@ namespace Models;
 use Utils\MysqliDatabase;
 
 
-class Car
+class K2534814_Car
 {
     public $id;
     public $model;
@@ -18,19 +18,19 @@ class Car
     public static function all()
     {
         $db = get_db();
-        return $db->fetchAll("SELECT * FROM cars ORDER BY id");
+        return $db->fetchAll("SELECT * FROM K2534814_cars ORDER BY id");
     }
 
     public static function find($id)
     {
         $db = get_db();
-        return $db->fetchOne("SELECT * FROM cars WHERE id = " . (int)$id);
+        return $db->fetchOne("SELECT * FROM K2534814_cars WHERE id = " . (int)$id);
     }
 
     public static function create($data)
     {
         $db = get_db();
-        $stmt = $db->prepare("INSERT INTO cars (model, category, daily_price, free_km, extra_km_charge, tax_rate, status) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $db->prepare("INSERT INTO K2534814_cars (model, category, daily_price, free_km, extra_km_charge, tax_rate, status) VALUES (?, ?, ?, ?, ?, ?, ?)");
         $model = $data['model'];
         $category = $data['category'];
         $daily_price = (float)$data['daily_price'];
@@ -48,7 +48,7 @@ class Car
     public static function updateStatus($id, $status)
     {
         $db = get_db();
-        $stmt = $db->prepare("UPDATE cars SET status = ? WHERE id = ?");
+        $stmt = $db->prepare("UPDATE K2534814_cars SET status = ? WHERE id = ?");
         $stmt->bind_param('si', $status, $id);
         $stmt->execute();
         $stmt->close();

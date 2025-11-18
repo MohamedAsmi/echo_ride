@@ -1,17 +1,17 @@
 <?php
 namespace Models;
 
-class Invoice
+class K2534814_Invoice
 {
     public static function generateFromReservation($reservation_id)
     {
         $db = get_db();
-        $res = $db->fetchOne("SELECT * FROM reservations WHERE id = " . (int)$reservation_id);
+        $res = $db->fetchOne("SELECT * FROM K2534814_reservations WHERE id = " . (int)$reservation_id);
         if (!$res) {
             throw new \RuntimeException('Reservation not found');
         }
 
-        $car = $db->fetchOne("SELECT * FROM cars WHERE id = " . (int)$res['car_id']);
+        $car = $db->fetchOne("SELECT * FROM K2534814_cars WHERE id = " . (int)$res['car_id']);
         if (!$car) {
             throw new \RuntimeException('Car not found');
         }
@@ -41,7 +41,7 @@ class Invoice
 
         // Insert invoice record
         $sql = sprintf(
-            "INSERT INTO invoices (reservation_id, base_price, extra_km_charge, discount, tax, deposit, total, created_at) VALUES (%d, %.2f, %.2f, %.2f, %.2f, %d, %.2f, '%s')",
+            "INSERT INTO K2534814_invoices (reservation_id, base_price, extra_km_charge, discount, tax, deposit, total, created_at) VALUES (%d, %.2f, %.2f, %.2f, %.2f, %d, %.2f, '%s')",
             (int)$res['id'],
             $base,
             $extra_charge,

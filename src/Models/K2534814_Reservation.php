@@ -1,7 +1,7 @@
 <?php
 namespace Models;
 
-class Reservation
+class K2534814_Reservation
 {
     const DEPOSIT = 5000;
 
@@ -13,7 +13,7 @@ class Reservation
         $now = new \DateTime();
         $interval = $now->diff($start);
         $category = $db->escape($data['category']);
-        $car = $db->fetchOne("SELECT * FROM cars WHERE category = '" . $category . "' AND status = 'Available' LIMIT 1");
+        $car = $db->fetchOne("SELECT * FROM K2534814_cars WHERE category = '" . $category . "' AND status = 'Available' LIMIT 1");
         if (!$car) {
             throw new \RuntimeException('No available car found for category ' . $data['category']);
         }
@@ -31,7 +31,7 @@ class Reservation
         $total_km = (int)$data['total_km'];
         $status = 'Confirmed';
         $sql = sprintf(
-            "INSERT INTO reservations (booking_id, customer_id, car_id, category, start_date, end_date, days, total_km, deposit, status, created_at) VALUES ('%s', %d, %d, '%s', '%s', '%s', %d, %d, %d, '%s', '%s')",
+            "INSERT INTO K2534814_reservations (booking_id, customer_id, car_id, category, start_date, end_date, days, total_km, deposit, status, created_at) VALUES ('%s', %d, %d, '%s', '%s', '%s', %d, %d, %d, '%s', '%s')",
             $db->escape($booking_id),
             (int)$data['customer_id'],
             (int)$car['id'],
@@ -47,7 +47,7 @@ class Reservation
         $db->query($sql);
         $resId = $db->insertId();
 
-        \Models\Car::updateStatus($car['id'], 'Reserved');
+        \Models\K2534814_Car::updateStatus($car['id'], 'Reserved');
 
         return $resId;
     }
@@ -55,27 +55,27 @@ class Reservation
     public static function find($id)
     {
         $db = get_db();
-        return $db->fetchOne("SELECT * FROM reservations WHERE id = " . (int)$id);
+        return $db->fetchOne("SELECT * FROM K2534814_reservations WHERE id = " . (int)$id);
     }
 
     public static function findByBookingId($booking_id)
     {
         $db = get_db();
         $escaped = $db->escape($booking_id);
-        return $db->fetchOne("SELECT * FROM reservations WHERE booking_id = '" . $escaped . "'");
+        return $db->fetchOne("SELECT * FROM K2534814_reservations WHERE booking_id = '" . $escaped . "'");
     }
 
     public static function listByDate($date)
     {
         $db = get_db();
         $escaped = $db->escape($date);
-        return $db->fetchAll("SELECT * FROM reservations WHERE start_date = '" . $escaped . "'");
+        return $db->fetchAll("SELECT * FROM K2534814_reservations WHERE start_date = '" . $escaped . "'");
     }
 
     public static function getDataWithCustomerAndCar()
     {
         $db = get_db();
-        $rows = $db->fetchAll("SELECT r.*, c.name AS customer_name, ca.model AS car_model FROM reservations r LEFT JOIN customers c ON r.customer_id = c.id LEFT JOIN cars ca ON r.car_id = ca.id ORDER BY r.id DESC");
+        $rows = $db->fetchAll("SELECT r.*, c.name AS customer_name, ca.model AS car_model FROM K2534814_reservations r LEFT JOIN K2534814_customers c ON r.customer_id = c.id LEFT JOIN K2534814_cars ca ON r.car_id = ca.id ORDER BY r.id DESC");
         return $rows;
     }
 }

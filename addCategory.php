@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/config.php';
 
-use Models\Category;
+use Models\K2534814_Category;
 
 header('Content-Type: application/json');
 
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     try {
-        $id = Category::create(['name' => $name]);
+        $id = K2534814_Category::create(['name' => $name]);
         echo json_encode([
             'status' => 'success',
             'message' => "Category created successfully (ID: $id)",

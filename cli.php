@@ -1,10 +1,10 @@
 <?php
 require_once __DIR__ . '/config.php';
 
-use Models\Car;
-use Models\Customer;
-use Models\Reservation;
-use Models\Invoice;
+use Models\K2534814_Car;
+use Models\K2534814_Customer;
+use Models\K2534814_Reservation;
+use Models\K2534814_Invoice;
 
 $argv0 = $argv[0] ?? 'cli.php';
 $cmd = $argv[1] ?? '';
@@ -23,7 +23,7 @@ function help()
 try {
     switch ($cmd) {
         case 'list-cars':
-            $cars = Car::all();
+            $cars = K2534814_Car::all();
             foreach ($cars as $c) {
                 echo "[{$c['id']}] {$c['model']} | {$c['category']} | LKR {$c['daily_price']} | Status: {$c['status']}\n";
             }
@@ -40,7 +40,7 @@ try {
                 'tax_rate' => $argv[7] ?? 10,
                 'status' => $argv[8] ?? 'Available'
             ];
-            $id = Car::create($data);
+            $id = K2534814_Car::create($data);
             echo "Car created with id: $id\n";
             break;
 
@@ -52,7 +52,7 @@ try {
                 'phone' => $argv[4] ?? '',
                 'email' => $argv[5] ?? ''
             ];
-            $id = Customer::create($data);
+            $id = K2534814_Customer::create($data);
             echo "Customer registered with id: $id\n";
             break;
 
@@ -65,13 +65,13 @@ try {
                 'end_date' => $argv[5] ?? '',
                 'total_km' => $argv[6] ?? 0
             ];
-            $rid = Reservation::create($data);
+            $rid = K2534814_Reservation::create($data);
             echo "Reservation created with id: $rid\n";
             break;
 
         case 'list-reservations':
             $db = get_db();
-            $rows = $db->fetchAll("SELECT r.*, c.name AS customer_name, ca.model AS car_model FROM reservations r LEFT JOIN customers c ON r.customer_id = c.id LEFT JOIN cars ca ON r.car_id = ca.id ORDER BY r.id DESC");
+            $rows = $db->fetchAll("SELECT r.*, c.name AS customer_name, ca.model AS car_model FROM K2534814_reservations r LEFT JOIN K2534814_customers c ON r.customer_id = c.id LEFT JOIN K2534814_cars ca ON r.car_id = ca.id ORDER BY r.id DESC");
             foreach ($rows as $r) {
                 echo "[{$r['id']}] Booking: {$r['booking_id']} | Customer: {$r['customer_name']} | Car: {$r['car_model']} | {$r['start_date']} to {$r['end_date']} | Status: {$r['status']}\n";
             }
@@ -79,7 +79,7 @@ try {
 
         case 'generate-invoice':
             if (!isset($argv[2])) { help(); exit; }
-            $info = Invoice::generateFromReservation((int)$argv[2]);
+            $info = K2534814_Invoice::generateFromReservation((int)$argv[2]);
             echo "Invoice ID: {$info['invoice_id']}\n";
             echo "Car: {$info['car']['model']} ({$info['car']['category']})\n";
             echo "Days: {$info['reservation']['days']} | Base: LKR {$info['base']}\n";
